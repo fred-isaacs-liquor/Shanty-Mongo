@@ -10,13 +10,14 @@ Requirements
 ------------
 
 - PHP 5.3 or greater
-- Zend Framework 1.10.0 or greater
+- Zend Framework 2.0
 - Mongodb 1.3 or greater
 - Mongo extension from pecl
 
 Features
 --------
 
+- Namespaces
 - ORM
 - Simple and flexible
 - Partial updates. Only changed data is sent back to the server. Also you can save or delete embeded documents individually.
