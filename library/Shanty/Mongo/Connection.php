@@ -1,36 +1,38 @@
 <?php
 
-require_once 'Shanty/Mongo.php';
+namespace Shanty\Mongo;
+
+use Shanty\Mongo;
 
 /**
  * @category   Shanty
- * @package    Shanty_Mongo
+ * @package    Shanty\Mongo
  * @copyright  Shanty Tech Pty Ltd
  * @license    New BSD License
  * @author     Coen Hyde
  */
-class Shanty_Mongo_Connection extends Mongo
+class Connection extends \Mongo
 {
 	static protected $_availableOptions = array(
 		'persist',
 		'timeout',
 		'replicaSet'
 	);
-	
+
 	protected $_connectionInfo = array();
-	
+
 	public function __construct($connectionString = null, array $options = array())
 	{
-		Shanty_Mongo::init();
-		
+		Mongo::init();
+
 		// Set the server to local host if one was not provided
 		if (is_null($connectionString)) $connectionString = '127.0.0.1';
 
 		// Force mongo to connect only when we need to
 		$options['connect'] = false;
 		$connectionInfo = self::parseConnectionString($connectionString);
-		
-		$this->_connectionInfo = array_merge($options, $connectionInfo);
+
+                $this->_connectionInfo = array_merge($options, $connectionInfo);
 
 		return parent::__construct($connectionString, $options);
 	}
@@ -55,7 +57,7 @@ class Shanty_Mongo_Connection extends Mongo
 	{
 		return $this->_connectionInfo['connectionString'];
 	}
-	
+
 	/**
 	 * Get the database this connection is connection to
 	 *
@@ -109,7 +111,7 @@ class Shanty_Mongo_Connection extends Mongo
 				$connectionInfo['hosts'][] = self::parseHostString($hostString);
 			}
 		}
-		
+
 		return $connectionInfo;
 	}
 
@@ -133,7 +135,7 @@ class Shanty_Mongo_Connection extends Mongo
 			if (count($data) > 1) {
 				$hostInfo['password'] = $data[1];
 			}
-			
+
 			$hostString = substr($hostString, $pos+1);
 		}
 
@@ -150,7 +152,7 @@ class Shanty_Mongo_Connection extends Mongo
 
 	/**
 	 * Get available options
-	 * 
+	 *
 	 * @return array
 	 */
 	static public function getAvailableOptions()

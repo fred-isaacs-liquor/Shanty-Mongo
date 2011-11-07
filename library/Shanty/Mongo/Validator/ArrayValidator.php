@@ -1,11 +1,13 @@
 <?php
 
-require_once 'Zend/Validate/Abstract.php';
+namespace Shanty\Mongo\Validator;
 
-class Shanty_Mongo_Validate_Array extends Zend_Validate_Abstract
+use Zend\Validator\AbstractValidator;
+
+class ArrayValidator extends AbstractValidator
 {
 	const NOT_ARRAY = 'notArray';
-	
+
 	protected $_messageTemplates = array(
 		self::NOT_ARRAY => "Value is not an Array"
 	);
@@ -16,7 +18,7 @@ class Shanty_Mongo_Validate_Array extends Zend_Validate_Abstract
 			$this->_error(self::NOT_ARRAY);
 			return false;
 		}
-		
+
 		return true;
 	}
 }

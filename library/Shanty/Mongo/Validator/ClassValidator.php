@@ -1,28 +1,30 @@
 <?php
 
-require_once 'Zend/Validate/Abstract.php';
+namespace Shanty\Mongo\Validator;
 
-class Shanty_Mongo_Validate_Class extends Zend_Validate_Abstract
+use Zend\Validator\AbstractValidator;
+
+class ClassValidator extends AbstractValidator
 {
-	const CLASS_NOT_VALID = 'classNotValid';
-	
+        const CLASS_NOT_VALID = 'classNotValid';
+
 	/**
-     * @var array
-     */
+         * @var array
+         */
 	protected $_messageTemplates = array(
 		self::CLASS_NOT_VALID => "'%value%' is not a %class%"
 	);
-	
-    /**
-     * @var array
-     */
-    protected $_messageVariables = array(
-        'class' => '_class'
-    );
+
+        /**
+         * @var array
+         */
+        protected $_messageVariables = array(
+                'class' => '_class'
+        );
 
 	protected $_class = null;
 
-	public function __construct($class) 
+	public function __construct($class)
 	{
 		$this->setClass($class);
 	}
@@ -31,7 +33,7 @@ class Shanty_Mongo_Validate_Class extends Zend_Validate_Abstract
 	{
 		$this->_class = $class;
 	}
-	
+
 	public function getClass()
 	{
 		return $this->_class;
@@ -41,12 +43,12 @@ class Shanty_Mongo_Validate_Class extends Zend_Validate_Abstract
 	{
 		$this->_setValue($value);
 		$class = $this->getClass();
-		
+
 		if (!($value instanceof $class)) {
 			$this->_error(self::CLASS_NOT_VALID);
 			return false;
 		}
-		
+
 		return true;
 	}
 }
