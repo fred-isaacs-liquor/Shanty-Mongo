@@ -1,0 +1,25 @@
+{
+    "name": "fred-isaacs-liquor/shanty-mongo",
+    "description": "Composerfied version of the original fork.",
+     "keywords": ["zend", "mongodb", "orm", "nosql"],
+    "homepage": "https://github.com/coen-hyde/Shanty-Mongo",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">=5.3"
+    },
+    "require-dev": {
+        "digital-canvas/zend-framework": "1.12.0",
+        "phpunit/phpunit": "~3.7.0"
+    },
+    "autoload": {
+        "psr-0": { "Shanty": "library/" }
+    },
+    "include-path": [ "library/" ],
+    "authors": [
+        {
+            "name": "Fred Isaacs",
+            "email": "fred.isaacs@gmail.com"
+        }
+    ]
+}

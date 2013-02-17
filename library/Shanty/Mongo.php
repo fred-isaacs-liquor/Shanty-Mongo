@@ -76,8 +76,8 @@ class Mongo
 			return new ClassValidator($data[1]);
 		};
 
-		static::storeRequirementCreator('/^Document:([A-Za-z]+[\w\-]*)$/', $classValidator);
-		static::storeRequirementCreator('/^DocumentSet:([A-Za-z]+[\w\-]*)$/', $classValidator);
+		static::storeRequirementCreator('/^Document:([A-Za-z\\\]+[\w\-]*)$/', $classValidator);
+		static::storeRequirementCreator('/^DocumentSet:([A-Za-z\\\]+[\w\-]*)$/', $classValidator);
 
 		static::$_initialised = true;
 	}
